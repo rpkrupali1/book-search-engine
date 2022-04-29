@@ -17,6 +17,7 @@ import { GET_ME } from "../utils/queries";
 const SavedBooks = () => {
   // use useQuery hook to make query request
   const { loading, data } = useQuery(GET_ME);
+  const [removeBook] = useMutation(REMOVE_BOOK);
 
   const userData = data?.me || {};
   console.log(userData);
@@ -61,15 +62,9 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await deleteBook(bookId, token);
-
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
-
-      const updatedUser = await response.json();
-      //setUserData(updatedUser);
-      // upon success, remove book's id from localStorage
+      await removeBook({
+        variables: { bookId: bookId },
+      });
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
