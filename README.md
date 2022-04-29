@@ -17,7 +17,8 @@ This is book search engine where user can search book and save their favorites.
 
 ## Deployed application
 
-Please use below link to access this application
+Please use below link to access this application:
+https://kp-book-engine.herokuapp.com/
 
 ## Application Details
 
